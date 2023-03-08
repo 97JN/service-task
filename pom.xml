@@ -12,6 +12,7 @@
         <module>eureka</module>
         <module>car-service</module>
         <module>gateway</module>
+        <module>config-server</module>
     </modules>
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
