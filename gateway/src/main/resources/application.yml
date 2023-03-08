@@ -1,0 +1,29 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: gateway
+
+
+  cloud:
+    gateway:
+      routes:
+        - id: car-service
+          uri: lb://car-service
+          predicates:
+            - Path=/**
+        - id: car-service-2
+          uri: lb://car-service-2
+          predicates:
+            - Path=/**
+eureka:
+  client:
+    service-url:
+      default-zone: ${EUREKA_URI:http://localhost:8761/eureka}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: gateway

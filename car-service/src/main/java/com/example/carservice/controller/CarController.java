@@ -3,19 +3,27 @@ package com.example.carservice.controller;
 import com.example.carservice.annotation.AnnotationClass;
 import com.example.carservice.entity.CarEntity;
 import com.example.carservice.service.CarService;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
+
+
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/cars")
+//@RequestMapping("/cars")
 public class CarController {
 
     private CarService carService;
 
-    @GetMapping("/start")
+    @Value("${eureka.instance.instance-id}")
+    private String instanceId;
+
+    @GetMapping("/")
     public String startPage(){
-        return "working..";
+        return "working.. " +instanceId;
     }
+
+
 
     public CarController(CarService carService) {
         this.carService = carService;
