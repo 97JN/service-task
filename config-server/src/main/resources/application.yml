@@ -1,11 +1,12 @@
 spring:
-  application:
-    name: config-service
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: ../config
+  profiles:
+    active: native
 
 server:
-  port: 8088
+  port: 8888
 
-eureka:
-  client:
-    service-url:
-      default-zone: ${EUREKA_URI:http://localhost:8761/eureka}
