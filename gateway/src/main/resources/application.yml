@@ -4,7 +4,12 @@ server:
 spring:
   application:
     name: gateway
-
+  config:
+    fail-fast: true
+    discovery:
+      service-id: config-service
+      enabled: true
+    profile: default
 
   cloud:
     gateway:
@@ -17,6 +22,9 @@ spring:
           uri: lb://car-service-2
           predicates:
             - Path=/**
+      loadbalancer:
+        ribbon:
+          enabled: false
 eureka:
   client:
     service-url:
